@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your First Fortress: A Beginner's Guide to Dwarf Fortress (Steam Edition)</title>
+<meta name="description" content="A beginner's guide to starting a first fortress in Dwarf Fortress Steam Edition: embark, first-day checklist, work details, food and booze, defense, moods, stress, and common mistakes.">
+<style>
+:root{
+  --bg:#1b1712; --panel:#26201a; --panel2:#2f281f; --ink:#ece3d0; --muted:#b9ab90;
+  --accent:#e0a84f; --accent2:#8fbf6a; --warn:#e07a5f; --link:#f2c46d; --border:#4a3e30;
+  --code:#3a3126;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:17px/1.6 Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:#fff}
+.wrap{max-width:860px;margin:0 auto;padding:16px}
+header.hero{border-bottom:2px solid var(--border);padding:24px 0 16px;margin-bottom:8px}
+.hero h1{font-size:clamp(1.6rem,5vw,2.4rem);line-height:1.2;margin:0 0 8px;color:var(--accent);letter-spacing:.5px}
+.hero p.sub{margin:0;color:var(--muted)}
+.meta{font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--muted);margin-top:10px}
+h2{font-size:1.35rem;margin:0;color:var(--accent);display:inline}
+h3{font-size:1.1rem;color:var(--accent2);margin:1.4em 0 .4em}
+p,li{overflow-wrap:break-word}
+nav.toc{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 18px;margin:18px 0}
+nav.toc h2{display:block;font-size:1.1rem;margin:.2em 0 .4em}
+nav.toc ol{margin:0;padding-left:1.4em;columns:2;column-gap:2em}
+nav.toc li{break-inside:avoid;margin:2px 0}
+@media (max-width:600px){nav.toc ol{columns:1}}
+details.sec{background:var(--panel);border:1px solid var(--border);border-radius:10px;margin:14px 0;overflow:hidden}
+details.sec>summary{cursor:pointer;padding:14px 18px;list-style:none;background:var(--panel2);user-select:none}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::before{content:"\25B8";display:inline-block;width:1.1em;color:var(--accent);transition:transform .15s}
+details.sec[open]>summary::before{transform:rotate(90deg)}
+details.sec>.body{padding:6px 18px 16px}
+.note,.tip,.warn,.check{border-left:4px solid var(--accent);background:#2b241b;padding:10px 14px;margin:12px 0;border-radius:0 8px 8px 0}
+.tip{border-color:var(--accent2)}
+.warn{border-color:var(--warn)}
+.check{border-color:#7fa7c9}
+.note b:first-child,.tip b:first-child,.warn b:first-child,.check b:first-child{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.85em;letter-spacing:.06em;text-transform:uppercase}
+kbd{font:600 .85em/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);border:1px solid #5a4b39;border-bottom-width:2px;border-radius:4px;padding:2px 6px;white-space:nowrap}
+.ascii{font-size:.92em;color:var(--muted);font-style:italic}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+table{border-collapse:collapse;width:100%;min-width:300px;font-size:.95em}
+th,td{border:1px solid var(--border);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel2);color:var(--accent)}
+ol.steps>li{margin:.5em 0}
+ul.checklist{list-style:none;padding-left:0}
+ul.checklist li{padding-left:1.8em;position:relative;margin:.45em 0}
+ul.checklist li::before{content:"\2610";position:absolute;left:0;color:var(--accent2);font-size:1.1em}
+dl.gloss dt{font-weight:bold;color:var(--accent2);margin-top:.7em}
+dl.gloss dd{margin:0 0 0 1em}
+.src{font:13px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
+.controls{font:14px system-ui,-apple-system,"Segoe UI",sans-serif;margin:8px 0}
+.controls a{margin-right:12px}
+footer{color:var(--muted);font-size:.9em;border-top:1px solid var(--border);margin-top:28px;padding-top:12px}
+@media (max-width:480px){body{font-size:16px}.wrap{padding:12px}details.sec>.body{padding:4px 12px 12px}details.sec>summary{padding:12px}}
+@media print{details.sec>.body{display:block}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Strike the Earth! Your First Fortress</h1>
+  <p class="sub">A beginner's guide to <strong>Dwarf Fortress: Steam Edition</strong> (the 2022+ graphical version from Bay 12 Games &amp; Kitfox Games, with the mouse-driven UI).</p>
+  <p class="meta">Written for Frank Brophy &middot; October 11, 2026 &middot; Checked against the <a href="https://dwarffortresswiki.org/index.php/Main_Page">Dwarf Fortress Wiki</a> pages for the current release (v53.16, the <a href="https://www.dwarffortresswiki.org/index.php/Release_information/53.16">August 2026 patch</a>). Hotkeys are the Steam defaults; you can see or change them in <em>Settings &rarr; Keybindings</em>. Classic ASCII-era keys appear only as side notes.</p>
+</header>
+
+<div class="note"><b>The one rule</b><br>
+<em>Losing is fun.</em> That's the community motto, and the wiki's <a href="https://dwarffortresswiki.org/index.php/Quickstart_guide">Quickstart guide</a> says it too: expect to lose a few fortresses while you learn. Each collapse teaches you something. Save often, and don't get too attached to fort #1.</div>
+
+<div class="tip"><b>Fastest start</b><br>
+The built-in tutorial is very good. The wiki recommends playing through it at least once. It picks a site, dwarves, and supplies for you and then walks you through the interface. You can replay any part of it later with the <strong>?</strong> button next to the minimap (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Tutorial">source</a>). Use this guide alongside it, or afterward.</div>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#worldgen">World gen &amp; picking a site</a></li>
+    <li><a href="#seven">Your starting 7 dwarves</a></li>
+    <li><a href="#firstday">First-day checklist</a></li>
+    <li><a href="#labor">Work details (labor)</a></li>
+    <li><a href="#food">Food, booze &amp; water</a></li>
+    <li><a href="#defense">Defense basics</a></li>
+    <li><a href="#moods">Migrants, moods, stress</a></li>
+    <li><a href="#mistakes">Common mistakes &amp; how forts die</a></li>
+    <li><a href="#glossary">Glossary</a></li>
+    <li><a href="#sources">Sources &amp; links</a></li>
+  </ol>
+  <div class="controls"><a href="#" id="openall">Expand all</a><a href="#" id="closeall">Collapse all</a></div>
+</nav>
+
+<!-- 1 -->
+<details class="sec" id="worldgen" open>
+<summary><h2>1. World generation &amp; picking an embark site</h2></summary>
+<div class="body">
+
+<h3>Make a gentle world</h3>
+<p>From the main menu choose <strong>Create new world</strong>. Every world is randomly generated, so there's no "default" map. For a first game, the <a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#World_Generation">Quickstart guide</a> suggests:</p>
+<div class="tablewrap"><table>
+<tr><th>Setting</th><th>Suggested value</th></tr>
+<tr><td>World map size</td><td>Medium</td></tr>
+<tr><td>History length</td><td>100 years</td></tr>
+<tr><td>Number of civilizations</td><td>Medium</td></tr>
+<tr><td>Number of sites</td><td>Medium</td></tr>
+<tr><td>Number of beasts</td><td>Low</td></tr>
+<tr><td>Natural savagery</td><td>Very Low</td></tr>
+<tr><td>Mineral occurrence</td><td>Everywhere</td></tr>
+</table></div>
+<p>Let generation finish before you continue. The wiki warns that stopping history early can limit what materials you can get at embark and through trade. Then pick <strong>Fortress</strong> mode. You'll be offered the tutorial (it picks a site for you) or <strong>Skip tutorial</strong> (you pick).</p>
+
+<h3>What a good first site looks like</h3>
+<p>The world map tooltip only describes the tile under your mouse. Your embark area covers several tiles, though, and they can hold different biomes. <strong>Hover over every tile in the embark rectangle</strong> before you commit, so you don't miss a hidden aquifer or evil biome (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Choosing_a_Good_Site">Quickstart: Choosing a good site</a>).</p>
+<ul class="checklist">
+  <li><strong>No aquifer</strong>, or at worst a light one. A heavy aquifer floods your digging and is a classic beginner killer.</li>
+  <li><strong>Trees:</strong> Woodland or Heavily Forested (Sparse at minimum). Wood is the only normal material for beds, and you'll want it for barrels and bins too (<a href="https://dwarffortresswiki.org/index.php/Embark#Plant_Life">Embark: Plant life</a>).</li>
+  <li><strong>Water:</strong> a river, stream, or brook.</li>
+  <li><strong>Soil</strong> (clay, sand, loam, etc.), ideally deep. Soil lets you farm underground without irrigating first.</li>
+  <li><strong>Surroundings:</strong> Serene, Calm, or Wilderness. <strong>Avoid Savage and Evil</strong> for now. Savage lands have giant animal men. Evil lands can have disease-carrying rain and undead, and some reanimate the dead (<a href="https://dwarffortresswiki.org/index.php/Embark#Surroundings">Embark: Surroundings</a>).</li>
+  <li><strong>Temperature:</strong> Warm or Temperate.</li>
+  <li><strong>Metals:</strong> iron at least; flux stone is a bonus (iron plus flux lets you make steel later).</li>
+  <li><strong>Neighbors:</strong> stay away from goblins and anyone at war with you. Necromancer towers <em>don't show in the neighbor list</em>, so look for their icons on the map. The embark confirmation should warn you if you're too close.</li>
+  <li><strong>Your civilization</strong> should be on the same landmass with at least two dwarven sites. Otherwise migrants can dry up after the second winter (<a href="https://dwarffortresswiki.org/index.php/Embark#Choosing_a_Site">Embark</a>).</li>
+</ul>
+
+<h3>Using the embark site finder</h3>
+<ol class="steps">
+  <li>With the map zoomed out (region view), click <strong>Find embark location</strong> at the bottom of the screen.</li>
+  <li>Set your criteria (for example: aquifer = No, trees, river, Calm/Wilderness surroundings, soil) and run the search.</li>
+  <li>When it finishes, press <kbd>Esc</kbd> to see the results. <span style="color:var(--accent2)">Green</span> rectangles are full matches and yellow ones are partial matches. Click one to zoom in and see the actual candidate sites.</li>
+  <li>Hover over every tile, then place the embark rectangle. The default is 4&times;4; you can resize it with the arrow buttons at the top left to cut out a bad biome.</li>
+  <li>If nothing matches, loosen the criteria. "Calm" is rare, so try "Wilderness". A world with no good sites is also a perfectly good reason to generate a new one.</li>
+</ol>
+<p>Left-click zooms in. Right-click zooms out, or closes a menu if one is open. <strong>Choose origin civilization</strong> (on the zoomed-out map) lists the dwarven civs and highlights their sites. Source: <a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Embark">Quickstart: Embark</a>.</p>
+
+<h3>Play Now! vs. Prepare for the journey carefully</h3>
+<p>After you pick a site you get two options. You also get <strong>difficulty settings</strong> on the right:</p>
+<ul>
+  <li><strong>Play Now!</strong> gives you a reasonable default party and supply list. <em>Use this for your first fort.</em></li>
+  <li><strong>Prepare for the journey carefully</strong> lets you spend skill points and embark points yourself. The wiki notes it "makes little difference in the long run," especially before you know what you'd change (<a href="https://dwarffortresswiki.org/index.php/Embark#Prepare_Carefully">Embark: Prepare carefully</a>).</li>
+</ul>
+<div class="tip"><b>Beginner setting</b><br>
+Set <strong>Enemies</strong> to <strong>Off</strong> for fort #1. That turns off sieges, megabeast attacks, werebeast attacks, and agitated wildlife. Hostile wildlife already living on the map and dangerous environments still apply. These settings can be changed after embark too, except the invasion caps (<a href="https://dwarffortresswiki.org/index.php/Embark#Difficulty">Embark: Difficulty</a>).</div>
+</div>
+</details>
+
+<!-- 2 -->
+<details class="sec" id="seven">
+<summary><h2>2. Your starting 7 dwarves (and their supplies)</h2></summary>
+<div class="body">
+<p>You always start with seven dwarves. With <strong>Play Now!</strong> their roles look like this (<a href="https://dwarffortresswiki.org/index.php/Embark#Play_Now!">Embark: Play Now!</a>):</p>
+<div class="tablewrap"><table>
+<tr><th>Dwarf</th><th>Main skills</th><th>Early job</th></tr>
+<tr><td>Miner</td><td>Proficient Miner, Skilled Appraiser</td><td>Digging. Your #1 priority.</td></tr>
+<tr><td>Woodworker</td><td>Proficient Carpenter, Competent Woodcutter</td><td>Beds, barrels, bins; chopping trees</td></tr>
+<tr><td>Stoneworker</td><td>Proficient Mason, Stonecutter, Stone Carver</td><td>Stone furniture, doors, workshops</td></tr>
+<tr><td>Metalcrafter</td><td>Metal Crafter + Stone Crafter <em>or</em> Gem Cutter</td><td>Crafts for trade; spare miner</td></tr>
+<tr><td>Fisherdwarf</td><td>Proficient Fisherdwarf, Proficient Fighter</td><td>Spare hands; a good first soldier</td></tr>
+<tr><td>Planter</td><td>Proficient Planter, Record Keeper</td><td>Farming; later your bookkeeper</td></tr>
+<tr><td>Expedition Leader</td><td>Organizer, Persuader, Negotiator</td><td>Later your manager and broker</td></tr>
+</table></div>
+
+<h3>What's in the wagon (Play Now! defaults)</h3>
+<p>Highlights from the wiki's <a href="https://dwarffortresswiki.org/index.php/Embark#Supplies">supply list</a> (exact items vary with what your civilization can make):</p>
+<ul>
+  <li>Copper (or bronze) <strong>picks</strong> and <strong>battle axes</strong>. Picks dig; an axe lets a woodcutter chop.</li>
+  <li>An iron (or steel) <strong>anvil</strong>, a wheelbarrow, a stepladder.</li>
+  <li>About <strong>60 units of alcohol</strong> in barrels, plus meat, fish, and plump helmets.</li>
+  <li><strong>Seeds</strong>: bags of plump helmet, cave wheat, sweet pod, pig tail, dimple cup, and quarry bush.</li>
+  <li>Rope, buckets, bags, thread/cloth, splints and crutches, two dogs, two cats, and a few other animals.</li>
+</ul>
+<div class="note"><b>Prepare carefully, later</b><br>
+Each dwarf gets 10 skill ranks to assign (max 5 in any one skill), and you spend embark points on items and animals. Skills don't cost points. Good first tweaks once you've played a fort: bring extra food and booze, or extra logs if your site has few trees. You can save a setup as a reusable profile (<a href="https://dwarffortresswiki.org/index.php/Embark#Prepare_Carefully">Embark</a>).</div>
+</div>
+</details>
+
+<!-- 3 -->
+<details class="sec" id="firstday">
+<summary><h2>3. First-day checklist</h2></summary>
+<div class="body">
+<p>When the wagon arrives, <strong>pause first</strong> with <kbd>Space</kbd>. Look around: move with <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>, change z-level (depth) with the scroll wheel, and zoom with <kbd>Ctrl</kbd>+scroll. <kbd>F1</kbd> recenters on the wagon. Find the water, the hills, and the trees before anyone picks up a pick (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Getting_your_bearings">Quickstart: Getting your bearings</a>).</p>
+<div class="note"><b>You don't control dwarves directly</b><br>You give the fortress a to-do list: dig here, build that, store things there. Dwarves who are <em>allowed</em> to do that kind of work pick up the tasks. If nobody has the right labor (or a pick, for mining), the job just sits there, often with no warning.</div>
+
+<h3>The checklist</h3>
+<ul class="checklist">
+  <li><strong>Dig into a hillside.</strong> Open the dig menu (pickaxe button at the bottom, <kbd>M</kbd>), choose <em>Dig/Mine</em>, and drag a rectangle. If there's a cliff or hill near the wagon, tunnel straight in. Make the entry corridor about 10&ndash;20 tiles long, and 3 tiles wide if you want trade wagons to reach a depot later. On flat ground, <em>channel</em> a 3&times;3 pit to make ramps, go down one level, and tunnel sideways. Channeling deeper than one level can strand dwarves in a pit (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Strike_The_Earth!">Quickstart: Strike the Earth</a>).</li>
+  <li><strong>Give a second dwarf a pick.</strong> In the labor menu (<kbd>Y</kbd>), select the <em>Miners</em> work detail and tick a second dwarf. Play Now! comes with picks to spare. See <a href="#labor">section 4</a>.</li>
+  <li><strong>Stairs down.</strong> Dig &rarr; <em>Stairs</em> (<kbd>M</kbd> then <kbd>T</kbd>). Click the top tile, scroll down a level or more, and click again. The game places the right down / up-down / up stairs for you.</li>
+  <li><strong>Stockpiles</strong> (<kbd>P</kbd>). Make a large general stockpile indoors and use its custom settings to <em>exclude</em> corpses, refuse, stone, gems, and wood. Those would clog it fast. Make a separate wood pile near the entrance and a <strong>refuse pile outside</strong>, which keeps rotting things and their <em>miasma</em> out of the fort. Dwarves will start hauling everything off the wagon (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Stockpiles">Quickstart: Stockpiles</a>, <a href="https://dwarffortresswiki.org/index.php/Stockpile">Stockpile</a>).</li>
+  <li><strong>Cut a few trees</strong> (tree-chop designation; <kbd>L</kbd> in the quickstart). Start with 3&ndash;5; one tree gives several logs. Too many and your woodcutter does nothing else. In a pinch you can deconstruct the wagon for 3 logs.</li>
+  <li><strong>Carpenter's workshop &rarr; beds, barrels, bins.</strong> Build menu (<kbd>B</kbd>) &rarr; Workshops &rarr; Carpenter's workshop. Click the finished workshop &rarr; <em>Add new task</em> and queue <strong>beds</strong> (wood only), <strong>barrels</strong> (for booze), and later bins.</li>
+  <li><strong>Meeting area.</strong> Your wagon is the first meeting area. Once you have a room underground, make a <strong>Meeting Area</strong> zone (<kbd>Z</kbd> &rarr; Meeting Area, drag, Accept) so idle dwarves wait inside.</li>
+  <li><strong>Underground farm with plump helmets.</strong> Dig a room in a <em>soil</em> layer (5&times;5 is fine), then Build &rarr; Farm plot (the quickstart's sequence is <kbd>B</kbd>&nbsp;<kbd>O</kbd>&nbsp;<kbd>F</kbd>&nbsp;<kbd>P</kbd>) and place a 3&times;3 plot. Click the plot and choose <strong>plump helmets for every season</strong>. Each season has its own tab; skip one and that field sits idle for that season (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Farming">Quickstart: Farming</a>, <a href="https://dwarffortresswiki.org/index.php/Farming">Farming</a>).</li>
+  <li><strong>Still &amp; brewing.</strong> Build &rarr; Workshops &rarr; Farming &rarr; <strong>Still</strong> (quickstart: <kbd>B</kbd>&nbsp;<kbd>O</kbd>&nbsp;<kbd>F</kbd>&nbsp;<kbd>L</kbd>), ideally near the farm. Click it &rarr; Add new task &rarr; <em>Brew drink from plant</em>. Each brew needs an empty barrel or rock pot (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Brewing">Quickstart: Brewing</a>, <a href="https://dwarffortresswiki.org/index.php/Brewing">Brewing</a>).</li>
+  <li><strong>Dining hall / tavern.</strong> Dig a decent room, place tables and chairs (made at the carpenter's or stoneworker's workshop), and zone it as a <strong>Dining Hall</strong>. To make it a tavern later, open the zone's location button and pick <em>New inn/tavern</em>. Dwarves strongly prefer eating at a table with a chair (<a href="https://dwarffortresswiki.org/index.php/Tavern">Tavern</a>).</li>
+  <li><strong>Bedrooms.</strong> The easy start is a <strong>Dormitory</strong> zone with a few beds: it's simple and needs fewer beds. Individual bedrooms (a small room with a bed and a door, zoned as <em>Bedroom</em>) make dwarves happier. The quickstart suggests putting sleeping areas at least ~8 tiles from noisy mining and woodcutting (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Bedrooms">Quickstart: Bedrooms</a>).</li>
+  <li><strong>Grazing animals</strong> (from the wagon) need a <strong>Pen/Pasture</strong> zone on grass, roughly 10&times;10 to start, or they'll starve.</li>
+  <li><strong>Turn off Hunters and Fisherdwarves</strong> for now (see section 4) so nobody wanders off alone.</li>
+</ul>
+
+<div class="note"><b>Shortcuts are optional</b><br>Everything above can be done by clicking the buttons along the bottom of the screen. The hotkeys come from the wiki's v50+ quickstart. If one doesn't match your game, check <em>Settings &rarr; Keybindings</em> and trust that over this guide.</div>
+<p class="ascii">Classic ASCII note: in the pre-Steam versions (0.47 and earlier) everything was keyboard-only. Digging lived under <kbd>d</kbd> (designations) and zones under <kbd>i</kbd>. Old tutorials and videos that use those keys are describing the old interface.</p>
+
+<div class="tip"><b>Mining safety</b><br>Don't dig into water. When newly revealed tiles are "damp", the game cancels digging there, and that's your warning. Leave at least one solid tile between your tunnels and any water, and remember water can flow diagonally (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Mining_safety">Quickstart: Mining safety</a>).</div>
+</div>
+</details>
+
+<!-- 4 -->
+<details class="sec" id="labor">
+<summary><h2>4. Labor assignment in the Work Details screen</h2></summary>
+<div class="body">
+<p>Open the <strong>Labor</strong> menu with <kbd>Y</kbd> or the labor button at the bottom left. It has four tabs: <strong>Work details</strong>, <strong>Standing orders</strong>, <strong>Kitchen</strong>, and <strong>Stone use</strong> (<a href="https://dwarffortresswiki.org/index.php/Labor#Labor_menu">Labor</a>).</p>
+
+<h3>How work details work</h3>
+<p>Work details are on the left; picking one lists your citizens on the right with their relevant skill levels. Each work detail has one of three modes:</p>
+<ul>
+  <li><strong>Everybody does this</strong>: every citizen may do these labors.</li>
+  <li><strong>Only selected do this</strong>: only the dwarves you tick.</li>
+  <li><strong>Nobody does this</strong>: nobody does it through this detail. Your ticks turn red and come back if you switch back to "Only selected".</li>
+</ul>
+<p>The default work details are: <strong>Miners, Woodcutters, Hunters, Planters, Fisherdwarves, Plant gatherers, Stonecutters, Engravers, Haulers, Orderlies, Siege Operators</strong>. Mining, woodcutting, and hunting can <em>only</em> be assigned through their default details (<a href="https://dwarffortresswiki.org/index.php/Labor#Default_work_details">Labor: Default work details</a>).</p>
+<p>Labors that aren't in any work detail are allowed for any unspecialized dwarf by default. That's why brewing, carpentry, and so on "just work" at the start. For more control, use <strong>Add new work detail</strong> to make your own (for example "Smiths", with furnace operating, weaponsmithing, armoring).</p>
+
+<h3>Specialization (the hammer-and-lock icon)</h3>
+<p>Each dwarf has a <strong>specialize</strong> toggle (red when on). A specialized dwarf only takes jobs from their assigned work details, workshops, or occupation. That's useful for keeping your best carpenter at the bench instead of hauling rocks.</p>
+
+<h3>Beginner setup</h3>
+<ol class="steps">
+  <li><strong>Miners</strong>: Only selected. Tick your miner plus one or two more (each needs a pick).</li>
+  <li><strong>Woodcutters</strong>: your woodworker (needs an axe).</li>
+  <li><strong>Hunters</strong> and <strong>Fisherdwarves</strong>: <em>Nobody does this</em> for now. The quickstart advises this so dwarves aren't out alone where wildlife can kill them.</li>
+  <li><strong>Planters</strong> and <strong>Haulers</strong>: leave on Everybody. Later you may exclude miners and skilled crafters from hauling.</li>
+  <li>Check the <strong>Kitchen</strong> tab: allow plump helmets for <em>brewing</em> and stop cooks from using them (and booze) as ingredients until you have plenty. New food types often start out with permissions you'll want to review.</li>
+</ol>
+<div class="warn"><b>Tool labors clash</b><br>Mining, woodcutting, and hunting each need a tool (pick, axe, crossbow). A dwarf can only have <strong>one</strong> of them; turning on a second silently turns off the first. Turn all three <strong>off</strong> for soldiers too, because the tool fights with their military uniform (<a href="https://dwarffortresswiki.org/index.php/Labor#Tool_requirements">Labor: Tool requirements</a>).</div>
+<p class="ascii">Side note: veterans manage big forts with the fan tool <a href="https://github.com/Dwarf-Therapist/Dwarf-Therapist">Dwarf Therapist</a> or with DFHack. You don't need either for a first fort.</p>
+</div>
+</details>
+
+<!-- 5 -->
+<details class="sec" id="food">
+<summary><h2>5. Food, booze &amp; water basics</h2></summary>
+<div class="body">
+<p>Your current food and drink totals show in the status bar at the top of the screen. The <strong>Stocks</strong> screen shows details, and once you appoint a bookkeeper (see below) the counts become accurate.</p>
+<h3>Food</h3>
+<ul>
+  <li><strong>Plump helmets</strong> are the beginner's best friend. They grow underground in soil all year, can be eaten raw, and can be brewed. Brewing a plump helmet also gives you back seeds, which keeps the farm going.</li>
+  <li>Once the farm is running, add a second plot with variety. The quickstart suggests sweet pods in spring and summer, cave wheat or pig tails in autumn, and plump helmets in winter. Dwarves grumble about eating the same food over and over.</li>
+  <li><strong>Kitchen</strong> (Build &rarr; Workshops &rarr; Farming &rarr; Kitchen): cooked meals stack ingredients together and keep well when stockpiled. Easy meals train your cook fastest.</li>
+  <li><strong>Emergency food:</strong> gather wild plants from shrubs (Plant gatherers), or slaughter an animal at a <strong>Butcher's shop</strong> (mark it from the Pets/Livestock list).</li>
+</ul>
+<h3>Booze</h3>
+<p>Dwarves can survive on water, but going without alcohol makes them slower and unhappier. The <a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Drinks">quickstart</a> says: build a still early. Each brew takes one plant and one empty barrel (or a stone <strong>rock pot</strong> from a craftsdwarf's workshop) and makes about 5 drinks. Set brewing to <strong>repeat</strong> once your crop comes in. A comfortable target is about ten drinks and ten meals per dwarf; much more than that is wasted effort early on.</p>
+<div class="tip"><b>Save wood</b><br>Make rock pots instead of wooden barrels, and stone tables and chairs instead of wooden ones. That saves wood for things that <em>need</em> it: beds and, later, charcoal.</div>
+<h3>Water</h3>
+<ul>
+  <li>Early on, mark a <strong>Water Source</strong> zone along a river or pond so dwarves (and the injured) know where to drink. Drinking outdoors carries some risk from wildlife and weather.</li>
+  <li>Later, build a <strong>well</strong> (it needs a bucket, rope or chain, and a water source below it). Hospitals need water to clean wounds, and dwarves dislike "drinking water without a well" (<a href="https://dwarffortresswiki.org/index.php/Stress">Stress</a>).</li>
+  <li>In cold climates surface water freezes in winter, and in very hot ones it can evaporate. That's one more reason to start somewhere temperate.</li>
+</ul>
+</div>
+</details>
+
+<!-- 6 -->
+<details class="sec" id="defense">
+<summary><h2>6. Defense basics</h2></summary>
+<div class="body">
+<p>Even with Enemies off, wild animals and thieves can turn up. Plan for <strong>one controlled entrance</strong> that you can shut.</p>
+
+<h3>A door you can lock</h3>
+<p>The simplest defense is a door on your entry tunnel. Click a built door and set it to <strong>forbidden</strong> (locked). That keeps out dwarves, animals, and most invaders, but <strong>thieves can pick locks and building destroyers (like trolls) smash doors</strong>. Anything left on the door's tile props it open. Invaders who pass through a door "capture" it so you can't relock it until your own creature walks back through (<a href="https://dwarffortresswiki.org/index.php/Door">Door</a>). Doors also block trade wagons, so your depot needs to be on the outside of any door.</p>
+
+<h3>A drawbridge on a lever</h3>
+<ol class="steps">
+  <li>Build &rarr; <strong>Bridge</strong> across the entry tunnel, between the trade depot and your trap corridor. Set the bridge's <strong>raise direction</strong>. If you get it wrong, it retracts instead of standing up as a wall, and archers can shoot across. The arrow points toward the hinge (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Drawbridge">Quickstart: Drawbridge</a>).</li>
+  <li>Build a <strong>Lever</strong> somewhere safe inside, such as near the meeting area.</li>
+  <li>Click the lever &rarr; <strong>Link lever</strong> &rarr; select the bridge. The quickstart says this takes 3 mechanisms in total; make them at a <strong>Mechanic's workshop</strong>.</li>
+  <li>Test it once. Pulling the lever is a job a dwarf has to walk to.</li>
+</ol>
+
+<h3>Cage traps (and stone-fall traps)</h3>
+<ul>
+  <li>A <strong>cage trap</strong> needs one mechanism and one cage (cages come from the carpenter's workshop or a metalsmith's forge). Build it from Build &rarr; Traps. A dwarf with the Mechanics labor installs it and reloads it (<a href="https://dwarffortresswiki.org/index.php/Trap#Cage_trap">Trap: Cage trap</a>).</li>
+  <li>Cage traps capture rather than kill. They also <strong>reveal ambushers</strong>, they're excellent against thieves and many invaders, and mechanism quality doesn't matter for them. <strong>Titans and forgotten beasts are immune.</strong></li>
+  <li>A <strong>stone-fall trap</strong> needs only a mechanism and a stone, so it's an easy early option.</li>
+  <li>Your own conscious dwarves, pets, caravans, and guests don't trigger traps. Unconscious or sleeping dwarves <em>can</em>, though.</li>
+  <li>Traps <strong>block trade wagons</strong>. Leave a trap-free route to the depot or build traps where wagons won't need to go.</li>
+  <li>A 1&times;1 pasture with a dog near the entrance makes a cheap guard that spots thieves.</li>
+</ul>
+
+<h3>Your first militia squad</h3>
+<ol class="steps">
+  <li>Pick 5 or so dwarves without vital civilian jobs. Combat skills are a plus; the Play Now! fisherdwarf is a Proficient Fighter. <strong>Turn off their Mining, Woodcutting, and Hunting labors</strong> first.</li>
+  <li>Open <strong>Nobles</strong> (<kbd>N</kbd>) and assign a <strong>Militia Commander</strong>.</li>
+  <li>Open the <strong>squad sidebar</strong> (bottom right, or <kbd>Q</kbd>) &rarr; <em>Create new squad</em> &rarr; the Militia Commander's squad. Pick a default <strong>uniform</strong> and add members.</li>
+  <li>Make a <strong>Barracks</strong> zone in a safe spot and assign the squad to it for training.</li>
+  <li>In the squad list, set their schedule to <strong>Active/Training</strong>. Recruits report for training, though it may wait until the month changes.</li>
+  <li>Give everyone at least a weapon and a <strong>helm</strong>. Sparring injuries are rare, but head injuries are the ones that end careers.</li>
+</ol>
+<p>Source: <a href="https://dwarffortresswiki.org/index.php/Military_quickstart">Military quickstart</a>, <a href="https://dwarffortresswiki.org/index.php/Squad">Squad</a>. A squad holds up to 10 dwarves. Bonus: military training is one of the strongest happy-thought sources in the game (<a href="https://dwarffortresswiki.org/index.php/Stress#Military_training">Stress</a>).</p>
+<div class="warn"><b>Wealth attracts trouble</b><br>The quickstart warns that piling up wealth fast (gold crafts, heavy engraving) draws invaders and, past a certain point, titans. Build weapons, armor, and traps before luxuries.</div>
+</div>
+</details>
+
+<!-- 7 -->
+<details class="sec" id="moods">
+<summary><h2>7. Migrants, strange moods, stress &amp; tantrums</h2></summary>
+<div class="body">
+<h3>Migrants</h3>
+<p>Expect your first migrant waves in your second and third seasons, typically 5&ndash;15 dwarves across the first two waves (<a href="https://dwarffortresswiki.org/index.php/Quickstart_guide#Migrants">Quickstart: Migrants</a>). Before they arrive, have beds (or dormitory space), food, and booze ready. Look over each newcomer's skills, adjust their work details (they arrive with some already set), and turn spare peasants into haulers or recruits. Also appoint a <strong>Manager</strong> (unlocks work orders), a <strong>Bookkeeper</strong> (accurate stock counts), and a <strong>Broker</strong> (trading) in the Nobles screen. The manager and bookkeeper each need an office: a small room with a chair and table, zoned as an Office.</p>
+
+<h3>Strange moods</h3>
+<p>Once you have <strong>at least 20 dwarves</strong>, one may be struck by a strange mood. They grab a workshop and demand materials to build an artifact (<a href="https://dwarffortresswiki.org/index.php/Strange_mood">Strange mood</a>).</p>
+<ul>
+  <li>The workshop depends on their highest "moodable" skill: carpenter &rarr; Carpenter's workshop, mason or miner &rarr; Stoneworker's, mechanic &rarr; Mechanic's, and so on. No moodable skill means a <strong>Craftsdwarf's workshop</strong>. If the right workshop doesn't exist or can't be reached, <em>build it</em>.</li>
+  <li>Click the claimed workshop to see what they want (fey dwarves say it outright; secretive ones "sketch pictures"). They gather materials in order, so provide the next item on the list.</li>
+  <li><strong>Success:</strong> an artifact, a big happy thought, and usually Legendary skill. <strong>Failure:</strong> after about a month and a half of waiting without what they need, they go insane and die soon after.</li>
+  <li><strong>Fell</strong> and <strong>macabre</strong> moods only strike highly stressed dwarves. A fell dwarf murders someone for materials, which is one more reason to keep stress low.</li>
+  <li>Keep a few spare materials around: logs, stone, bars, leather, cloth, bones, gems.</li>
+</ul>
+
+<h3>Stress</h3>
+<p>Stress builds slowly from bad thoughts and drops slowly with good ones. If a dwarf stays stressed for a long time they become <em>haggard</em>, then <em>harrowed</em>, and a harrowed dwarf who has a traumatic experience can go insane (<a href="https://dwarffortresswiki.org/index.php/Stress">Stress</a>). Check a dwarf's <em>Thoughts and preferences</em> tab to see why they're unhappy.</p>
+<div class="tablewrap"><table>
+<tr><th>Common stressors</th><th>Good stress relievers</th></tr>
+<tr><td>Sleeping on the floor; no bedroom<br>Eating without a table or chair<br>Seeing corpses or deaths; miasma<br>Rain, snow, and sun (after living underground)<br>No alcohol; same food and booze over and over<br>No chance to pray; tattered clothes</td>
+<td>A personal bedroom (more so if nice or engraved)<br>A big, good-quality dining room or tavern<br>Satisfying, skill-raising work<br>Military training (very strong)<br>Temples, taverns, libraries, pets, friends, family<br>Fine furniture and artifacts on display</td></tr>
+</table></div>
+
+<h3>Tantrums &amp; breakdowns</h3>
+<p>When short-term <em>and</em> long-term stress are both high, dwarves break down. Depending on personality, that's a <strong>tantrum</strong> (smashing things, picking fights), going <strong>oblivious</strong>, or <strong>depression</strong>. A tantrum can hurt others, which stresses <em>them</em>, and you get a tantrum spiral (<a href="https://dwarffortresswiki.org/index.php/Mental_breakdown">Mental breakdown</a>). The fix is prevention: beds, tables and chairs, booze variety, and keeping bodies cleaned up and buried. Build coffins and a tomb or graveyard early. A dwarf who keeps tantruming can be confined to a furnished room for a while, away from new stressors.</p>
+</div>
+</details>
+
+<!-- 8 -->
+<details class="sec" id="mistakes">
+<summary><h2>8. Common early mistakes &amp; how fortresses die</h2></summary>
+<div class="body">
+<ul>
+  <li><strong>Digging into water or an aquifer.</strong> Floods are fast and dwarves swim badly. Respect "damp" warnings, and don't channel or mine under a river until you know how.</li>
+  <li><strong>Running out of booze or barrels.</strong> The still sits idle because there are no empty barrels or pots. Keep a few spare containers at all times.</li>
+  <li><strong>Forgetting farm seasons.</strong> If you only set the current season, the plot sits fallow the rest of the year.</li>
+  <li><strong>Nobody can do the job.</strong> Designations ignored? Check work details, tools (picks, axes), and whether anyone can actually reach the spot.</li>
+  <li><strong>Multi-level pits and channels</strong> that dwarves fall into and can't climb out of.</li>
+  <li><strong>Dwarves outside alone</strong> (hunters, fishers, wood haulers) running into wildlife. Hunting and fishing off early; check the units list's <em>Others</em> tab for dangerous animals.</li>
+  <li><strong>General stockpile full of rocks and logs</strong>, so workshops clog with clutter. Use dedicated stone and wood piles and a 1&times;1 <strong>garbage dump</strong> zone for excess stone. Loose stone on the floor doesn't slow dwarves down, so you don't need to haul all of it.</li>
+  <li><strong>Grazers starving</strong> with no pasture, or <strong>miasma</strong> from refuse piled inside.</li>
+  <li><strong>Hauling everything</strong>: skilled dwarves spend their days carrying rocks. Exclude key crafters from hauling once you have migrants.</li>
+  <li><strong>Getting rich too fast</strong> before you have any defense. See section 6.</li>
+  <li><strong>Unhappiness spirals</strong>: no beds, no dining room, unburied dead, and a mood that fails. See section 7.</li>
+  <li><strong>Trade depot unreachable.</strong> Caravans need a 3-wide path with no traps or stairs in the way. Trees and boulders can block it too.</li>
+  <li><strong>Not keeping watch.</strong> Check announcements, the units screen, and your stocks regularly so you see trouble coming.</li>
+</ul>
+<div class="tip"><b>When it all goes wrong</b><br>Before you start over, look at the announcement log and figure out what happened. A dead fortress can also be <em>reclaimed</em> later in the same world (see the wiki's <a href="https://dwarffortresswiki.org/index.php/Reclaim_fortress_mode">Reclaim fortress mode</a>).</div>
+</div>
+</details>
+
+<!-- 9 -->
+<details class="sec" id="glossary">
+<summary><h2>9. Glossary</h2></summary>
+<div class="body">
+<dl class="gloss">
+  <dt>Aquifer</dt><dd>A water-soaked soil or stone layer. Digging into it lets water in. Light ones can be managed; heavy ones are much harder.</dd>
+  <dt>Artifact</dt><dd>A unique, valuable item made by a dwarf in a strange mood.</dd>
+  <dt>Barracks</dt><dd>A zone where a squad trains and stores gear.</dd>
+  <dt>Channel</dt><dd>A dig order that removes a floor and leaves a ramp on the level below.</dd>
+  <dt>Embark</dt><dd>Choosing your site, dwarves, and supplies, then arriving with the wagon.</dd>
+  <dt>FPS</dt><dd>Game speed. Big maps, lots of trees, flowing water, and many dwarves slow it down.</dd>
+  <dt>Fun</dt><dd>Community slang for disaster ("Losing is fun!").</dd>
+  <dt>Labor / Work detail</dt><dd>A labor is permission to do a kind of job. A work detail is a named group of labors you assign to dwarves.</dd>
+  <dt>Megabeast / Titan / Forgotten beast</dt><dd>Huge, dangerous monsters. Immune to cage traps.</dd>
+  <dt>Miasma</dt><dd>Purple haze from rotting things. It stresses dwarves, so keep refuse outside.</dd>
+  <dt>Migrants</dt><dd>New dwarves who join your fort in waves.</dd>
+  <dt>Plump helmet</dt><dd>An underground mushroom. The classic first crop: edible raw and brewable into dwarven wine.</dd>
+  <dt>Savagery / Evil</dt><dd>Biome traits. Savage means monstrous wildlife; evil means undead, odd weather, and sometimes the dead rising.</dd>
+  <dt>Siege / Ambush</dt><dd>Organized attacks by hostile civilizations (goblins in vanilla).</dd>
+  <dt>Stockpile</dt><dd>A marked area where dwarves store a chosen category of items.</dd>
+  <dt>Strange mood</dt><dd>A sudden, all-consuming urge to make an artifact. Feed it materials or the dwarf goes insane.</dd>
+  <dt>Stress / Tantrum</dt><dd>Accumulated unhappiness, and the destructive breakdown it can cause.</dd>
+  <dt>Z-level</dt><dd>One layer of height or depth. Scroll the mouse wheel to move between them.</dd>
+  <dt>Zone</dt><dd>A marked area with a purpose: meeting area, bedroom, dining hall, pasture, water source, barracks, and so on.</dd>
+</dl>
+</div>
+</details>
+
+<!-- 10 -->
+<details class="sec" id="sources">
+<summary><h2>10. Sources &amp; further reading</h2></summary>
+<div class="body">
+<p>All checked on October 11, 2026. The wiki marks these pages as current-version (v53.16, with v50+ UI) and notes that some content may still need updating, so <strong>if the game and a guide disagree, trust the game.</strong></p>
+<h3>Dwarf Fortress Wiki (current version)</h3>
+<ul>
+  <li><a href="https://dwarffortresswiki.org/index.php/Quickstart_guide">Quickstart guide</a>: world gen settings, site criteria, first-fort walkthrough, hotkeys</li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Embark">Embark</a>: site selection, Play Now! party and supplies, difficulty</li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Labor">Labor</a>: Work details, default details, specialization, Kitchen tab, tool labors</li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Military_quickstart">Military quickstart</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Squad">Squad</a></li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Trap">Trap</a> (cage, stone-fall, weapon traps) &middot; <a href="https://dwarffortresswiki.org/index.php/Door">Door</a></li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Stockpile">Stockpile</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Farming">Farming</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Brewing">Brewing</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Tavern">Tavern</a></li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Strange_mood">Strange mood</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Stress">Stress</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Mental_breakdown">Mental breakdown (tantrums)</a></li>
+  <li><a href="https://dwarffortresswiki.org/index.php/Starting_build">Starting build</a> &middot; <a href="https://dwarffortresswiki.org/index.php/Aquifer">Aquifer</a> &middot; <a href="https://dwarffortresswiki.org/index.php/DF2014:Quickstart_guide">DF2014 (0.47, classic) Quickstart</a> for comparison</li>
+</ul>
+<h3>Official</h3>
+<ul>
+  <li><a href="https://store.steampowered.com/app/975370/Dwarf_Fortress/">Dwarf Fortress on Steam</a> &middot; <a href="https://steamcommunity.com/app/975370/announcements/">Steam announcements / patch notes</a></li>
+  <li><a href="https://www.dwarffortresswiki.org/index.php/Release_information/53.16">Release information 53.16</a> (August 2026 patch; includes an updated beginner tutorial)</li>
+  <li><a href="https://www.bay12games.com/dwarves/">Bay 12 Games</a> &middot; <a href="https://www.bay12forums.com/smf/">Bay 12 Forums</a> &middot; <a href="https://dwarffortressbugtracker.com/">Official bug tracker</a></li>
+</ul>
+<h3>Community tools</h3>
+<ul>
+  <li><a href="https://github.com/Dwarf-Therapist/Dwarf-Therapist">Dwarf Therapist</a> (labor management) &middot; <a href="https://docs.dfhack.org/">DFHack docs</a> (optional quality-of-life tools)</li>
+</ul>
+</div>
+</details>
+
+<footer>
+  <p>Unofficial fan guide for a beginner's first fortress. Dwarf Fortress is by Bay 12 Games, published by Kitfox Games. Menu names and hotkeys follow the Dwarf Fortress Wiki's v50+ pages and Steam default keybindings; your own keybinds may differ. Strike the earth!</p>
+</footer>
+</div>
+<script>
+(function(){
+  function setAll(v){document.querySelectorAll('details.sec').forEach(function(d){d.open=v;});}
+  document.getElementById('openall').addEventListener('click',function(e){e.preventDefault();setAll(true);});
+  document.getElementById('closeall').addEventListener('click',function(e){e.preventDefault();setAll(false);});
+  function openHash(){var h=location.hash.slice(1);if(!h)return;var el=document.getElementById(h);if(el&&el.tagName==='DETAILS'){el.open=true;}}
+  window.addEventListener('hashchange',openHash);openHash();
+})();
+</script>
+</body>
+</html>
