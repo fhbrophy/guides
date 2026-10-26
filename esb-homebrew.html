@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero to ESB: Complete Beginner Homebrew Plan</title>
+<style>
+  :root {
+    --bg: #f8f4ef;
+    --card: #ffffff;
+    --text: #2c2416;
+    --accent: #c17f3e;
+    --accent-dark: #8b5a2b;
+    --muted: #6b5e4e;
+    --border: #e6ddd2;
+    --success: #3d7a4a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, #8b5a2b, #c17f3e);
+    color: white;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 0.5rem; font-size: 2.2rem; }
+  header p { margin: 0; opacity: 0.95; max-width: 700px; margin-inline: auto; }
+  main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  h2 { color: var(--accent-dark); margin-top: 0; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+  h3 { color: var(--accent); }
+  ul, ol { padding-left: 1.2rem; }
+  li { margin-bottom: 0.4rem; }
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li { position: relative; padding-left: 1.8rem; }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 1.1rem;
+  }
+  .timeline { display: grid; gap: 0.75rem; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #fdfaf6;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+  }
+  .timeline-item strong { color: var(--accent-dark); }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #f3ebe3; color: var(--accent-dark); }
+  .budget { background: #f0f7f1; border-left: 4px solid var(--success); }
+  .tip { background: #fff8e6; border-left: 4px solid #e6b325; padding: 0.75rem 1rem; border-radius: 6px; margin: 1rem 0; }
+  .warning { background: #fdf2f2; border-left: 4px solid #c0392b; padding: 0.75rem 1rem; border-radius: 6px; margin: 1rem 0; }
+  a { color: var(--accent-dark); }
+  footer { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size: 0.9rem; }
+  @media print {
+    body { background: white; }
+    section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+    header { background: #8b5a2b; -webkit-print-color-adjust: exact; }
+  }
+  @media (max-width: 600px) {
+    .timeline-item { grid-template-columns: 1fr; }
+    header h1 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Zero to ESB</h1>
+  <p>Complete beginner plan to brew Extra Special Bitter at home — starting with zero equipment and zero experience.</p>
+</header>
+
+<main>
+  <section>
+    <h2>What is an ESB?</h2>
+    <p>Extra Special Bitter (also called Strong Bitter) is a classic English ale. Expect an amber-to-copper color, medium body, bready/biscuity malt with caramel or toffee notes, moderate earthy and floral hop bitterness (not American IPA levels), and pleasant fruity esters from English yeast. It’s balanced and highly drinkable.</p>
+    <table>
+      <tr><th>Stat</th><th>Typical Range</th></tr>
+      <tr><td>Original Gravity (OG)</td><td>1.048 – 1.060</td></tr>
+      <tr><td>Final Gravity (FG)</td><td>1.010 – 1.016</td></tr>
+      <tr><td>ABV</td><td>4.6 – 6.2%</td></tr>
+      <tr><td>IBU</td><td>30 – 50</td></tr>
+      <tr><td>Color (SRM)</td><td>6 – 18 (amber/copper)</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Why Start with Extract?</h2>
+    <p>For your first brew, extract + specialty grains is the clear winner:</p>
+    <ul>
+      <li>Far less equipment and space required than all-grain.</li>
+      <li>Shorter brew day (about 3–4 hours vs 5–6+).</li>
+      <li>More forgiving for beginners while still producing excellent beer.</li>
+      <li>You can upgrade to all-grain later once you’re comfortable.</li>
+    </ul>
+    <div class="tip"><strong>Recommendation:</strong> Do a full-volume boil if your pot allows (8+ gallons). If not, a partial boil with top-up water works fine for extract.</div>
+  </section>
+
+  <section>
+    <h2>Shopping List & Budget</h2>
+    <h3>Equipment (one-time, ~$120–200)</h3>
+    <ul class="checklist">
+      <li>8+ gallon stainless steel brew pot</li>
+      <li>6.5+ gallon fermenter bucket + lid + airlock + stopper</li>
+      <li>Bottling bucket with spigot</li>
+      <li>Auto-siphon + tubing</li>
+      <li>Hydrometer + trial jar</li>
+      <li>Thermometer (instant-read or floating)</li>
+      <li>Star San or similar no-rinse sanitizer</li>
+      <li>Bottle capper + caps (enough for ~50 bottles)</li>
+      <li>~48–50 clean 12 oz bottles (reuse commercial beer bottles if you remove labels) or a few growlers</li>
+      <li>Optional but helpful: mesh grain bag, long spoon, kitchen timer, small scale</li>
+    </ul>
+    <p>Starter kits from Northern Brewer, MoreBeer, or local homebrew shops often bundle most of this.</p>
+
+    <h3>Ingredients (per 5-gallon batch, ~$40–55)</h3>
+    <ul class="checklist">
+      <li>6.5–7 lb Light or Maris Otter liquid malt extract (or equivalent dry extract)</li>
+      <li>12 oz Crystal 60L</li>
+      <li>4 oz Crystal 80–120L</li>
+      <li>1 oz East Kent Goldings or Challenger hops (60 min)</li>
+      <li>0.5 oz Fuggles hops (15 min)</li>
+      <li>0.5 oz East Kent Goldings hops (flameout)</li>
+      <li>1 packet SafAle S-04 or Wyeast 1968 London ESB yeast</li>
+      <li>5 oz corn sugar (priming sugar)</li>
+      <li>1 Whirlfloc tablet or Irish moss</li>
+      <li>Optional: small amount of gypsum for water</li>
+    </ul>
+    <p>Search for “ESB extract kit” — many shops sell ready-to-brew versions of this style.</p>
+
+    <div class="budget">
+      <h3>Estimated First-Batch Budget</h3>
+      <ul>
+        <li>Equipment: $150 (mid-range starter kit)</li>
+        <li>Ingredients: $48</li>
+        <li>Bottles/caps (if needed): $15</li>
+        <li><strong>Total first time: ~$210</strong></li>
+        <li>Subsequent batches: ~$45–55</li>
+      </ul>
+      <p>Prices are approximate 2026 US averages. Local shops or sales can lower this.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Recommended Recipe (5 gallons)</h2>
+    <p><strong>Target:</strong> ~1.053 OG, ~1.012 FG, ~5.2% ABV, ~37 IBU, amber color.</p>
+    <ul>
+      <li>6.75 lb Light / Maris Otter LME (or 5.5 lb DME)</li>
+      <li>12 oz Crystal 60L</li>
+      <li>4 oz Crystal 90L</li>
+      <li>1 oz EKG or Challenger (60 min)</li>
+      <li>0.5 oz Fuggles (15 min)</li>
+      <li>0.5 oz EKG (flameout / whirlpool 10–15 min)</li>
+      <li>SafAle S-04 or Wyeast 1968</li>
+      <li>Whirlfloc at 15 min</li>
+      <li>5 oz corn sugar at bottling</li>
+    </ul>
+    <p>Expected: balanced malt-hop character with English esters. Mash/steep grains at 155°F for 30 minutes.</p>
+  </section>
+
+  <section>
+    <h2>Detailed Brew Day Steps</h2>
+    <div class="warning"><strong>Sanitation is the #1 rule.</strong> Anything that touches cooled wort or beer must be sanitized. Star San is your friend — keep a spray bottle or bucket of it ready.</div>
+    <ol>
+      <li><strong>Prep (30 min):</strong> Clean and sanitize fermenter, airlock, siphon, and any other gear. Set up your work area.</li>
+      <li><strong>Steep grains (30 min):</strong> Heat 1.5–2 gallons of water to ~160°F. Add crushed crystal malts in a mesh bag. Hold at 150–155°F for 30 minutes. Stir occasionally.</li>
+      <li><strong>Remove grains & add extract:</strong> Remove bag and let it drain (don’t squeeze hard). Bring liquid to a gentle boil, turn off heat, and stir in the malt extract thoroughly to dissolve (avoid scorching).</li>
+      <li><strong>Boil (60 min):</strong> Return to a vigorous boil. Add bittering hops at the start (60 min). Add Whirlfloc and flavor hops at 15 min. Add aroma hops at flameout and let steep 10–15 min while cooling starts.</li>
+      <li><strong>Chill:</strong> Cool the wort as quickly as possible to 65–70°F (ice bath, immersion chiller, or no-chill method). The faster, the better for clarity and avoiding infection.</li>
+      <li><strong>Transfer & pitch:</strong> Pour or siphon into sanitized fermenter. Top up with cool, clean water to 5 gallons. Aerate well (shake or splash). Take a gravity reading (target ~1.050–1.055). Pitch yeast at the right temperature.</li>
+      <li><strong>Ferment:</strong> Fit airlock. Keep at 65–68°F for 10–14 days or until gravity is stable (usually ~1.010–1.014).</li>
+    </ol>
+    <p>Total active brew day time: ~3.5–4.5 hours.</p>
+  </section>
+
+  <section>
+    <h2>Timeline: Purchase to First Pint</h2>
+    <div class="timeline">
+      <div class="timeline-item"><strong>Days 1–3</strong><span>Order or buy equipment + ingredients. Watch 1–2 beginner extract brew videos.</span></div>
+      <div class="timeline-item"><strong>Brew Day</strong><span>Follow the steps above. ~4 hours.</span></div>
+      <div class="timeline-item"><strong>Days 1–14</strong><span>Fermentation. Leave it alone except to check airlock activity and temperature.</span></div>
+      <div class="timeline-item"><strong>Day 14–16</strong><span>Optional cold crash. Bottle with priming sugar.</span></div>
+      <div class="timeline-item"><strong>Weeks 3–5</strong><span>Bottle condition at room temperature. First taste test around week 4–5. Best after another 1–2 weeks.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Bottling</h2>
+    <ol>
+      <li>Sanitize bottles, caps, bottling bucket, and siphon.</li>
+      <li>Dissolve 5 oz corn sugar in a cup of boiling water, cool, and add to bottling bucket.</li>
+      <li>Gently siphon beer onto the priming solution (avoid splashing).</li>
+      <li>Fill bottles, cap, and store upright at ~68–72°F for 2 weeks.</li>
+      <li>Chill and enjoy. Carbonation level will be moderate (good for the style).</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Checklist</h2>
+    <ul class="checklist">
+      <li>Equipment purchased and cleaned</li>
+      <li>Ingredients on hand</li>
+      <li>Sanitizer prepared</li>
+      <li>Brew day completed</li>
+      <li>Yeast pitched and airlock bubbling (or not — some don’t)</li>
+      <li>Gravity stable after 10–14 days</li>
+      <li>Bottled and capped</li>
+      <li>Conditioned 2+ weeks</li>
+      <li>First pint enjoyed</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tips & Common Pitfalls</h2>
+    <ul>
+      <li><strong>Sanitation, sanitation, sanitation.</strong> Most “bad beer” is infection from dirty gear.</li>
+      <li>Don’t boil with the lid on (can cause off-flavors).</li>
+      <li>Cool quickly and pitch healthy yeast.</li>
+      <li>Temperature control during fermentation makes a big difference — avoid hot rooms.</li>
+      <li>Be patient. Rushing bottling or drinking too early leads to disappointment.</li>
+      <li>Record everything (temps, gravity, notes) so you can improve next time.</li>
+      <li>Start simple. Your first ESB will still be drinkable and fun.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Resources</h2>
+    <ul>
+      <li><a href="https://www.northernbrewer.com/" target="_blank">Northern Brewer</a> — kits, ingredients, equipment</li>
+      <li><a href="https://www.morebeer.com/" target="_blank">MoreBeer</a> — excellent selection</li>
+      <li>Local homebrew shops (search “homebrew supply near me”)</li>
+      <li>YouTube: search “extract brewing for beginners” or “how to brew ESB extract”</li>
+      <li>American Homebrewers Association (homebrewersassociation.org) for more recipes and advice</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Zero to ESB — A practical starter guide. Brew responsibly and enjoy the process.</p>
+</footer>
+</body>
+</html>
