@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dublin from the Hilton · Charlemont pubs, food &amp; gifts</title>
+<meta name="description" content="Walkable locals' pubs, casual dinner and a genuine Irish gift plan around Hilton Dublin, Charlemont Place. Nov 15–20, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--green:#1b4d3e;--green2:#163d32;--mint:#e8f3ee;--gold:#c4a35a;--cream:#f6f1e6;--ink:#1c241f;--muted:#5c6a62;--card:#fff;--line:#e2d8c4;--warn:#8a6200;--bad:#8b2e2e}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}
+a{color:var(--green)}h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15}
+.hero{background:radial-gradient(circle at 15% 20%,#2e7a62 0,#1b4d3e 50%,#0f2f26 100%);color:#fff;padding:52px 18px 56px;text-align:center;position:relative}
+.hero:after{content:"";position:absolute;inset:auto -10% -40px -10%;height:70px;background:var(--cream);border-radius:50% 50% 0 0}
+.back{position:absolute;top:14px;left:14px;color:#fff;text-decoration:none;font-size:.85rem;background:#00000028;padding:6px 12px;border-radius:20px;z-index:2;font-weight:600}
+.k{letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;opacity:.85}
+.hero h1{font-size:clamp(1.8rem,6vw,2.8rem);margin:.25em 0;font-weight:800}
+.hero p{max-width:640px;margin:0 auto;opacity:.92}
+.pill{display:inline-block;margin-top:16px;background:#ffffff22;border:1px solid #ffffff55;border-radius:30px;padding:6px 14px;font-size:.82rem}
+main{max-width:640px;margin:0 auto;padding:0 14px 48px}
+section{margin:32px 0}h2{font-size:1.55rem;margin:0 0 8px;color:var(--green)}
+.lede{color:var(--muted);margin:0 0 16px}
+.note,.info{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:10px 0;font-size:.92rem}
+.note{border-style:dashed;border-color:#8fbfa8}
+.info b{color:var(--green)}
+.podium{display:grid;gap:10px}
+.pod{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:inherit;display:block}
+.pod .n{font-family:Fraunces,serif;font-size:1.6rem;color:var(--green);font-weight:800;line-height:1}
+.pod b{display:block;margin:4px 0 2px}.pod span{color:var(--muted);font-size:.9rem}
+.plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;display:flex;gap:12px}
+.plan .d{flex:0 0 54px;height:54px;border-radius:14px;background:var(--green);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
+.plan .d b{font-size:1.05rem;letter-spacing:0;font-family:Fraunces,serif}
+.plan h3{margin:0 0 4px;font-size:1.1rem}
+.plan p{margin:0;font-size:.92rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0;scroll-margin-top:12px}
+.card h3{margin:4px 0 0;font-size:1.28rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
+.tag{font-size:.72rem;font-weight:700;border-radius:20px;padding:2px 8px;background:var(--mint);color:var(--green)}
+.tag.warn{background:#fff4d6;color:var(--warn)}.tag.tour{background:#fdecec;color:var(--bad)}
+.rating{margin:6px 0}.star{background:#fff3d6;color:#8a5a00;font-weight:600;border-radius:8px;padding:2px 8px;font-size:.88rem}
+.muted{color:var(--muted)}.sm{font-size:.82rem}
+.why{background:#1b4d3e0d;border-left:3px solid var(--green);padding:8px 12px;border-radius:0 10px 10px 0;margin:8px 0}
+dl{display:grid;grid-template-columns:72px 1fr;gap:4px 10px;font-size:.88rem;margin:10px 0}dt{color:var(--muted);font-weight:600}dd{margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.b{display:inline-flex;align-items:center;justify-content:center;min-height:44px;background:var(--green);color:#fff;text-decoration:none;padding:8px 14px;border-radius:24px;font-size:.85rem;font-weight:700}
+.b.alt{background:#fff;color:var(--green);border:2px solid var(--green)}
+.b.ghost{background:var(--mint);color:var(--green);border:0}
+.v{display:inline-block;font-size:.75rem;font-weight:700;border-radius:10px;padding:2px 8px;margin:2px 0 6px}
+.v.ok{background:#e3f4e8;color:var(--green)}.v.part{background:#fff4d6;color:var(--warn)}.v.no{background:#fde3e3;color:var(--bad)}
+#map{height:320px;border-radius:16px;border:1px solid var(--line);z-index:0;margin-top:8px}
+.route{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}
+.route ol{margin:8px 0 0;padding-left:20px}.route li{margin:6px 0}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:8px 0 32px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.toc a{background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 12px;text-decoration:none;font-size:.82rem;font-weight:600;color:var(--green)}
+@media(max-width:520px){.plan{flex-direction:row}.card dl{grid-template-columns:64px 1fr}}
+</style>
+</head>
+<body>
+<header class="hero">
+<a class="back" href="../index.html">← All guides</a>
+<div class="k">Hilton Dublin · Charlemont Place · Nov 15–20, 2026</div>
+<h1>Dublin after work, from the canal</h1>
+<p>Authentic locals' pubs, casual dinner and genuine Irish gifts, all walkable from the hotel. Temple Bar is skipped on purpose.</p>
+<div class="pill">Researched Sat 14 Nov 2026 · walk times from the Hilton · no bookings made</div>
+</header>
+<main>
+
+<section>
+<h2>The short version</h2>
+<p class="lede">If you only remember five pubs and three meals:</p>
+<div class="podium">
+<a class="pod" href="#oconnell"><div class="n">1</div><b>J. O'Connell's</b><span>6-min walk · the real Portobello local — Victorian snugs, a serious pint, no session, no food.</span></a>
+<a class="pod" href="#devitts"><div class="n">2</div><b>Devitt's</b><span>11-min walk · best nearby trad + pub grub, music every night, Sunday from 1pm.</span></a>
+<a class="pod" href="#hill"><div class="n">3</div><b>The Hill, Ranelagh</b><span>8-min walk · 1845 neighbourhood pub with food and cocktails, just across the canal.</span></a>
+<a class="pod" href="#hartigans"><div class="n">4</div><b>Hartigan's</b><span>~10-min walk · a "country pub in the city." Sunday closed.</span></a>
+<a class="pod" href="#corrigans"><div class="n">5</div><b>Corrigan's</b><span>~8–13-min walk · quiet Mountpleasant local between Rathmines and Ranelagh.</span></a>
+</div>
+<p class="lede" style="margin-top:16px">Eat at <a href="#camden">Camden Kitchen</a> (Tue–Sat), <a href="#devitts">Devitt's</a> (pub grub, 7 days), or <a href="#richmond">Richmond</a> (Wed–Sun, Bib Gourmand). Shop on <b>Thursday</b> (or Sunday afternoon if you have the energy). For an Old Fashioned: <a href="#delahunt">The Sitting Room at Delahunt</a>, 9 min, Tue–Sat from 5pm.</p>
+<div class="toc">
+<a href="#plan">Evening plan</a>
+<a href="#pubs">Pubs</a>
+<a href="#food">Food</a>
+<a href="#gifts">Gifts</a>
+<a href="#sunday">Sunday</a>
+<a href="#map">Map</a>
+</div>
+</section>
+
+<section>
+<h2>Know before you go</h2>
+<div class="info"><b>Base:</b> Hilton Dublin, Charlemont Place, Dublin 2, D02 A893 — south side of the Grand Canal, Portobello/Ranelagh edge. The <b>Charlemont Luas</b> (Green line) is beside the hotel; two stops to St Stephen's Green for the gift shops.</div>
+<div class="info"><b>Rhythm:</b> Back at the hotel about 4:30–5pm Mon–Thu after the 30-min Uber from training. Sunset is mid-afternoon in mid-November, so evenings start in the dark. Taxis: FreeNow is the usual Dublin hail app; Uber also books licensed taxis.</div>
+<div class="info"><b>Walk times:</b> Measured from the hotel coordinates (53.33118, −6.25918). OpenStreetMap walking-route distance (OSRM) ÷ 4.8 km/h (80 m/min), rounded. For a few Baggot / Merrion / Grafton destinations the mapped route looked like a canal-crossing detour, so those are shown as a range (straight-line × 1.35 as the low end, OSRM as the high end). Tap <b>Directions</b> for a live Google walking estimate.</div>
+<div class="info"><b>Verification:</b> <span class="v ok">✔ own site</span> hours or music read on the official site on 14 Nov 2026. <span class="v part">◐ Google / listing</span> rating or hours from a public Google listing (via Exa or a similar mirror) the same day. <span class="v no">✖ unverified</span> confirm before going. Nothing here is a booking.</div>
+<div class="note">Avoid the Temple Bar tourist-trap pubs. The famous Merrion Row <b>O'Donoghue's</b> is not the same as O'Donoghue's on Suffolk Street — go to 15 Merrion Row if you go at all.</div>
+</section>
+
+<section id="plan">
+<h2>Suggested evenings</h2>
+<p class="lede">One evening is for gifts. The rest stay close to the canal. Swap freely.</p>
+
+<div class="plan" id="sun-plan"><div class="d">Sun<b>15</b></div><div>
+<h3>Arrival, canal, early trad</h3>
+<p>Land ~10:54 Irish time. Check in, walk the Grand Canal (it's at the door), nap if you need it. Easiest pint: <b>The Barge</b> is 2 minutes away (convenient sports/live-music pub, not a quiet local). Better authentic option: <b>Devitt's</b> has official Sunday trad from 1pm, plus food all day. If you still have legs, <b>O'Donoghue's</b> (Merrion Row, ~15–20 min, more touristy) lists Sunday sessions all day. Optional afternoon gift loop — Avoca is open until 7pm Sunday. Early night.</p>
+</div></div>
+
+<div class="plan"><div class="d">Mon<b>16</b></div><div>
+<h3>Neighbourhood pint</h3>
+<p>Camden Kitchen and Richmond are closed Monday. Dinner at <b>The Hill</b> (8 min, food + cocktails, opens 2pm) or <b>GiGi</b> (casual Italian, 12 min, dinner from 5pm) or pub grub at <b>Devitt's</b>. Then the 6-min walk to <b>J. O'Connell's</b> (opens 4pm) for the week's best local pint.</p>
+</div></div>
+
+<div class="plan"><div class="d">Tue<b>17</b></div><div>
+<h3>Camden dinner + trad (or an Old Fashioned)</h3>
+<p><b>Camden Kitchen</b> from 5pm (10 min; last booking 9:30pm) — the best nearby Irish neighbourhood dinner. Then <b>Devitt's</b> trad from 6:30pm, or knock in at <b>The Sitting Room at Delahunt</b> (9 min, classic cocktails from 5pm, closed Sun–Mon) if you want an Old Fashioned.</p>
+</div></div>
+
+<div class="plan"><div class="d">Wed<b>18</b></div><div>
+<h3>Portobello dinner, then Baggot / Leeson</h3>
+<p><b>Richmond</b> early-evening menu until 6:30pm (2/3 courses €44/€55; last orders 9pm) — 6 min, same street as O'Connell's. Then <b>Hartigan's</b> (~10 min; possible midweek session, unverified) or walk on to <b>Doheny &amp; Nesbitt</b> (official trad from 6:45pm, food all day, moderate tourist level) or <b>Toners</b> next door.</p>
+</div></div>
+
+<div class="plan"><div class="d">Thu<b>19</b></div><div>
+<h3>Gift evening ⭐</h3>
+<p>Leave the hotel around 5pm. Luas from Charlemont, 2 stops to St Stephen's Green (or a 15–25 min walk). Hit Irish Design Shop and Article first (both close 6pm), then Celtic Whiskey Shop and Kilkenny (both until 7pm Thursday), finish at Avoca (until 7). Pint after at <b>Kehoe's</b> (snugs, no music, right by the shops) or <b>O'Donoghue's</b> trad from 8pm. Sheridans is already closed on weeknights (5pm) — do it Sunday if you want cheese.</p>
+</div></div>
+
+<p class="sm muted">Fri 20: flight home around 1pm. Only try a morning shop if gifts didn't happen — Avoca opens 9am, Kilkenny 10am, Celtic Whiskey 10:30am — and leave plenty of time for the airport.</p>
+</section>
+
+<section id="map">
+<h2>Map</h2>
+<p class="lede">Blue is the hotel. Green pins are the ranked pubs; gold are food and gift stops. Tap a pin for directions.</p>
+<div id="map"></div>
+</section>
+
+<section id="pubs">
+<h2>Ranked locals' pubs</h2>
+<p class="lede">Ranked for authenticity and walkability from the Hilton, not for fame. Tourist-level is flagged. Trad days are official where a site says so; otherwise marked unverified.</p>
+
+<article class="card" id="oconnell">
+<div class="tags"><span class="tag">6 min walk</span><span class="tag">Portobello</span><span class="tag">Low tourist</span></div>
+<h3>J. O'Connell's</h3>
+<div class="rating"><span class="star">★ 4.6</span> <span class="muted">772 Google reviews</span> <span class="v part">◐ Google listing</span></div>
+<p class="why"><b>Why it's authentic:</b> An intact Victorian local at 29 South Richmond Street — wooden floors, ornate back bar, original snugs — consistently cited for one of the area's best pints. A 2019 Dublin Publopedia review says the house does not allow music. No kitchen. This is the "sit in the snug and talk" pub, 6 minutes from your door.</p>
+<dl>
+<dt>Address</dt><dd>29 Richmond Street South, Portobello, Dublin 2, D02 WV30</dd>
+<dt>Hours</dt><dd>Mon–Thu 4–11:30pm · Fri–Sat 4pm–12:30am · Sun 4–11pm <span class="muted">(Google listing, 14 Nov 2026; no official site found. One crawl site lists earlier weekday openings — confirm if you go before 4.)</span></dd>
+<dt>Trad</dt><dd>No — quiet pint pub.</dd>
+<dt>Food</dt><dd>No.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=J.%20O%27Connell%27s%2C%2029%20Richmond%20Street%20South%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=J.%20O%27Connell%27s%2C%2029%20Richmond%20Street%20South%2C%20Dublin">Map</a>
+</div>
+</article>
+
+<article class="card" id="devitts">
+<div class="tags"><span class="tag">11 min walk</span><span class="tag">Camden St</span><span class="tag">Trad 7 days</span><span class="tag">Food</span></div>
+<h3>Devitt's of Camden Street</h3>
+<div class="rating"><span class="star">★ 4.6</span> <span class="muted">3,508 Google reviews</span> <span class="v ok">✔ own site</span></div>
+<p class="why"><b>Why it's authentic:</b> Long-established Camden Street pub with a well-regarded pint and proper pub grub. It draws a mixed local/visitor crowd, but it is not a Temple Bar trap — and it's the most reliable trad room within a short walk of the hotel.</p>
+<dl>
+<dt>Address</dt><dd>78 Camden Street Lower, Dublin 2, D02 C642</dd>
+<dt>Hours</dt><dd>Mon–Tue 10am–12:30am · Wed–Thu 10am–1am · Fri–Sat 10am–1:30am · Sun 10am–midnight. Food all day.</dd>
+<dt>Trad</dt><dd>Official: live music 7 days — from <b>6:30pm Mon–Thu</b>, 7:30pm Fri–Sat, <b>1pm Sunday</b>.</dd>
+<dt>Food</dt><dd>Yes — breakfast, lunch, dinner, including beef &amp; Guinness stew (own site).</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Devitt%27s%2C%2078%20Camden%20Street%20Lower%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Devitt%27s%2C%2078%20Camden%20Street%20Lower%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.devittspub.ie/">Website</a>
+</div>
+</article>
+
+<article class="card" id="hill">
+<div class="tags"><span class="tag">8 min walk</span><span class="tag">Ranelagh</span><span class="tag">Food</span><span class="tag">Cocktails</span></div>
+<h3>The Hill</h3>
+<div class="rating"><span class="star">★ 4.5</span> <span class="muted">712 Google reviews</span> <span class="v ok">✔ own site</span></div>
+<p class="why"><b>Why it's authentic:</b> A Ranelagh neighbourhood pub in an 1845 building, renovated but still used as a local. Official site mentions food, coffee, post-work pints and cocktails. A Nov 2025 visitor review describes a Thursday-night session; quiz nights are also mentioned in reviews. Session days are not posted on the official site.</p>
+<dl>
+<dt>Address</dt><dd>1 Old Mountpleasant, Ranelagh, Dublin 6, D06 YT25</dd>
+<dt>Hours</dt><dd>Mon–Wed 2–11:30pm · Thu 2pm–midnight · Fri 2pm–1am · Sat 12pm–1am · Sun 12–11pm (hours table on own site). A line on the same page says "open from 12pm seven days" — use the table, and don't count on a Monday lunchtime opening.</dd>
+<dt>Trad</dt><dd><span class="v no">✖ unverified schedule</span> Thursday sessions are reported (including a Nov 2025 review); confirm on the day.</dd>
+<dt>Food</dt><dd>Yes (own site + OpenTable listing).</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=The%20Hill%20Pub%2C%201%20Old%20Mountpleasant%2C%20Ranelagh%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=The%20Hill%20Pub%2C%201%20Old%20Mountpleasant%2C%20Ranelagh%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.thehillpub.ie/home">Website</a>
+</div>
+</article>
+
+<article class="card" id="hartigans">
+<div class="tags"><span class="tag">~10 min walk</span><span class="tag">Leeson St</span><span class="tag">Low tourist</span><span class="tag warn">Sun closed</span></div>
+<h3>Hartigan's</h3>
+<div class="rating"><span class="star">★ 4.4</span> <span class="muted">569 Google reviews</span> <span class="v part">◐ Google listing</span></div>
+<p class="why"><b>Why it's authentic:</b> The old line is "a country pub in the city" — no-frills, compact, stained glass, a pint-first room popular with locals and students. Not a dining pub (older reviews mention Taytos and bacon fries). The official-looking hartigans.eu site was down when checked (HTTP 500).</p>
+<dl>
+<dt>Address</dt><dd>100 Leeson Street Lower, Dublin 2, D02 W023</dd>
+<dt>Hours</dt><dd>Mon–Thu 12:30–11:30pm · Fri 12:30pm–12:30am · Sat 4:30pm–12:30am · <b>Sunday closed</b> (Google listing and a PubHub record dated 11 Sep 2026). A third-party page still lists Sunday hours — don't plan on Sunday.</dd>
+<dt>Walk</dt><dd>About 10 min along the canal to Leeson Bridge (562 m straight-line). The raw OSM route was 16 min and looked like a detour.</dd>
+<dt>Trad</dt><dd><span class="v no">✖ unverified</span> Visitor reviews (2023–24) describe Saturday sessions; one listings site says Wed &amp; Sat ~8–11pm. Confirm at the bar.</dd>
+<dt>Food</dt><dd>Snacks only, not a dinner stop.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Hartigan%27s%2C%20100%20Leeson%20Street%20Lower%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Hartigan%27s%2C%20100%20Leeson%20Street%20Lower%2C%20Dublin">Map</a>
+</div>
+</article>
+
+<article class="card" id="corrigans">
+<div class="tags"><span class="tag">~8–13 min walk</span><span class="tag">Mountpleasant</span><span class="tag">Low tourist</span></div>
+<h3>Corrigan's</h3>
+<div class="rating"><span class="star">★ 4.5</span> <span class="muted">300 Google reviews</span> <span class="v part">◐ Google listing</span></div>
+<p class="why"><b>Why it's authentic:</b> A quiet, old-school local on Lower Mountpleasant Avenue, between Rathmines and Ranelagh — the kind of room recommended for an unhurried pint rather than a night out. No official website found.</p>
+<dl>
+<dt>Address</dt><dd>27–28 Mountpleasant Avenue Lower, Rathmines, Dublin 6, D06 YA72</dd>
+<dt>Hours</dt><dd>Mon 11:30am–11:30pm · Tue–Thu 4–11:30pm · Fri–Sat 11:30am–12:30am · Sun 12:30–11pm (Google listing, 14 Nov 2026).</dd>
+<dt>Trad</dt><dd>Not advertised — treat as a talking pub.</dd>
+<dt>Food</dt><dd>Not verified.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Corrigan%27s%2C%2027%20Mountpleasant%20Avenue%20Lower%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Corrigan%27s%2C%2027%20Mountpleasant%20Avenue%20Lower%2C%20Dublin">Map</a>
+</div>
+</article>
+
+<article class="card" id="lowerdeck">
+<div class="tags"><span class="tag">~8 min canal walk</span><span class="tag">Portobello Harbour</span><span class="tag">Low–mod tourist</span></div>
+<h3>The Lower Deck</h3>
+<span class="v no">✖ hours not on a live official page</span>
+<p class="why"><b>Why it's authentic:</b> Canal-side Portobello local at the harbour — a natural stop if you're walking west along the water from the hotel. Its website returned an error on 14 Nov 2026, so hours are unconfirmed here; check Google or the door.</p>
+<dl>
+<dt>Address</dt><dd>3 Portobello Harbour, Dublin 8, D08 KCH2</dd>
+<dt>Hours</dt><dd>Third-party listings disagree (some say from 10:30am, others from noon). Confirm before you go.</dd>
+<dt>Walk</dt><dd>~8 min along the canal (about 400 m straight). The OSM route was 13 min via a detour.</dd>
+<dt>Food</dt><dd>Reported, not verified on an official menu this pass.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=The%20Lower%20Deck%2C%203%20Portobello%20Harbour%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=The%20Lower%20Deck%2C%203%20Portobello%20Harbour%2C%20Dublin">Map</a>
+</div>
+</article>
+
+<article class="card" id="toners">
+<div class="tags"><span class="tag">~15–22 min walk</span><span class="tag">Baggot St</span><span class="tag tour">Moderate tourist</span></div>
+<h3>Toners</h3>
+<div class="rating"><span class="star">★ 4.5</span> <span class="muted">3,479 Google reviews</span> <span class="v part">◐ own site + Google</span></div>
+<p class="why"><b>Why go:</b> Est. 1734, dark wood, a snug, and a big yard out back. A Dublin classic that visitors know, but still a proper pint pub — flagged moderate-tourist because it's famous, not because it's fake. Good pairing with Doheny &amp; Nesbitt next door and the National Gallery area.</p>
+<dl>
+<dt>Address</dt><dd>139 Baggot Street Lower, Dublin 2</dd>
+<dt>Hours</dt><dd>Google listing: Mon–Thu 11am–11:30pm · Fri–Sun 11:30am–12:30am. The official contact page wording is garbled ("Mon–Thu 10:30am–12pm", "Sunday 12:30am–12:00pm") — use the Google hours and treat official close times as unclear.</dd>
+<dt>Trad</dt><dd><span class="v no">✖ unverified</span> A city listings site (Sesh.ie) says Wed &amp; Fri at 9:30pm, no cover. Not on the official site.</dd>
+<dt>Food</dt><dd>Yes, per the official site and reviews; front bar/yard are walk-in only (own site).</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Toners%20Pub%2C%20139%20Baggot%20Street%20Lower%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Toners%20Pub%2C%20139%20Baggot%20Street%20Lower%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.tonerspub.ie/">Website</a>
+</div>
+</article>
+
+<article class="card" id="doheny">
+<div class="tags"><span class="tag">~15–22 min walk</span><span class="tag">Baggot St</span><span class="tag">Trad 7 days</span><span class="tag">Food</span><span class="tag tour">Moderate tourist</span></div>
+<h3>Doheny &amp; Nesbitt</h3>
+<div class="rating"><span class="star">★ 4.6</span> <span class="muted">2,840 Google reviews</span> <span class="v ok">✔ own site</span></div>
+<p class="why"><b>Why go:</b> A Victorian landmark on Lower Baggot Street since 1828 (current name from the 1960s), with snugs, several bars, and a reputation as a political/talking pub. It is on a lot of visitor lists, but the room is the real thing, and the trad timetable is posted on the official site. Food is a genuine option here.</p>
+<dl>
+<dt>Address</dt><dd>5 Baggot Street Lower, Dublin 2, D02 F866</dd>
+<dt>Hours</dt><dd>Mon–Wed 9am–12:30am · Thu–Sat 9am–1:30am · Sun 10am–12:30am (own site). Walk-ins welcome for groups under 10.</dd>
+<dt>Trad</dt><dd>Official: <b>Sun–Wed from 6:45pm</b> till late; <b>Thu–Sat from 7:45pm</b> till late.</dd>
+<dt>Food</dt><dd>Yes — breakfast, lunch and dinner daily (own site).</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Doheny%20%26%20Nesbitt%2C%205%20Baggot%20Street%20Lower%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Doheny%20%26%20Nesbitt%2C%205%20Baggot%20Street%20Lower%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.dohenyandnesbitts.ie/">Website</a>
+</div>
+</article>
+
+<article class="card" id="odonoghues">
+<div class="tags"><span class="tag">~15–20 min walk</span><span class="tag">Merrion Row</span><span class="tag">Trad 7 days</span><span class="tag tour">Higher tourist</span></div>
+<h3>O'Donoghue's <span class="sm muted">(Merrion Row — the original)</span></h3>
+<div class="rating"><span class="star">★ 4.6</span> <span class="muted">6,313 Google reviews</span> <span class="v ok">✔ own site (music times)</span></div>
+<p class="why"><b>Why go, with a flag:</b> Where The Dubliners made their name; walls of music photos; sessions every night. It is busier and more visited than the Portobello/Ranelagh locals, so it's flagged higher-tourist — still worth it for the music, especially Sunday. Do not confuse it with O'Donoghue's on Suffolk Street.</p>
+<dl>
+<dt>Address</dt><dd>15 Merrion Row, Dublin 2, D02 PF50</dd>
+<dt>Hours</dt><dd>Opening hours are not clearly listed on the official site. Google popular times run through the day; confirm at the door.</dd>
+<dt>Trad</dt><dd>Official: <b>Mon–Thu 8pm–midnight</b> · Fri 6:30pm–midnight · Sat 5:30pm–midnight · <b>Sunday all day</b>. A Dec 2025 review said Sunday started around 12:30pm.</dd>
+<dt>Food</dt><dd>Mentioned in reviews; not verified on an official menu this pass.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=O%27Donoghue%27s%2C%2015%20Merrion%20Row%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=O%27Donoghue%27s%2C%2015%20Merrion%20Row%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.odonoghues.ie/music">Website</a>
+</div>
+</article>
+
+<article class="card" id="kehoes">
+<div class="tags"><span class="tag">~20–25 min walk</span><span class="tag">South Anne St</span><span class="tag tour">Moderate tourist</span></div>
+<h3>Kehoe's</h3>
+<div class="rating"><span class="star">★ 4.6</span> <span class="muted">4,555 Google reviews</span> <span class="v ok">✔ own site</span></div>
+<p class="why"><b>Why go:</b> Licensed 1803, Victorian mahogany, stained glass and snugs — one of the best "perfect pint, no band" rooms in the centre. It's a short stroll from the gift shops, so it is the natural Thursday-evening closer. No live music on the official site.</p>
+<dl>
+<dt>Address</dt><dd>9 South Anne Street, Dublin 2, D02 NY88</dd>
+<dt>Hours</dt><dd>Mon–Thu 10:30am–11:30pm · Sun 11:30am–11pm (own site). Fri–Sat are written on the official site as "10.30am–12.30pm"; Google lists 10:30am–12:30am, which is almost certainly what they mean.</dd>
+<dt>Trad</dt><dd>No (own site has no music listing).</dd>
+<dt>Food</dt><dd>The group page mentions food; not verified as a full kitchen this pass — treat as a pint stop.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Kehoe%27s%2C%209%20South%20Anne%20Street%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Kehoe%27s%2C%209%20South%20Anne%20Street%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://kehoesdublin.ie/">Website</a>
+</div>
+</article>
+
+<div class="info"><b>Closest pint, with a caveat — The Barge</b> (42 Charlemont Street, <b>2-min walk</b>). McCafferty's took it over in March 2023: food, screens, and live music most nights. McCafferty's site hours: Mon–Wed 12–11:30pm, Thu–Sat 12pm–2:30am, Sun 12:30–11pm. The older thebarge.ie page disagrees on Thursday close and has a garbled Sunday line. Handy if you're wrecked; not the "locals' snug" pick. <a href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=The%20Barge%2C%2042%20Charlemont%20Street%2C%20Dublin&travelmode=walking">Directions</a> · <a href="https://thebarge.mccaffertysbars.com/">Website</a></div>
+
+<div class="info"><b>Also nearby, if you want a second pint:</b> Cassidy's and The Bleeding Horse (historic, more of a Camden strip pub) about 8–9 min; Birchalls in Ranelagh, 16 min, old-fashioned toastie-and-pint room; Smyth's of Ranelagh, 14 min, a neighbourhood institution (its site only listed takeaway hours, so bar hours are unverified here); Slattery's, Rathmines, ~18–22 min.</div>
+</section>
+
+<section id="food">
+<h2>Food nearby</h2>
+<p class="lede">Casual, walkable, after 5pm. Prices are what a source actually stated — no invented checks.</p>
+
+<article class="card" id="camden">
+<div class="tags"><span class="tag">10 min walk</span><span class="tag">Irish bistro</span><span class="tag warn">Closed Sun–Mon</span></div>
+<h3>Camden Kitchen</h3>
+<div class="rating"><span class="star">★ 4.9</span> <span class="muted">708 OpenTable reviews</span> · <span class="muted">OpenTable also lists €31–50</span> <span class="v ok">✔ own site (hours)</span></div>
+<p class="why">Chef-owner Pádraic Hayden's seasonal Irish neighbourhood bistro in the old Camden Market buildings, since 2010. The strongest "proper dinner" within a short walk. Totally Dublin and French Foodie in Dublin have both praised it as a hidden gem. Last booking 9:30pm — go early after work.</p>
+<dl>
+<dt>Address</dt><dd>3A Camden Market, Grantham Street, Dublin 8</dd>
+<dt>Hours</dt><dd>Dinner <b>Tue–Sat 5–9:30pm</b> (last booking). Closed Sunday and Monday (own site).</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Camden%20Kitchen%2C%20Grantham%20Street%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Camden%20Kitchen%2C%20Grantham%20Street%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.camdenkitchen.ie/">Website / menu</a>
+</div>
+</article>
+
+<article class="card">
+<div class="tags"><span class="tag">11 min walk</span><span class="tag">Pub grub</span><span class="tag">Open 7 days</span></div>
+<h3>Devitt's — see above</h3>
+<p>The easy solo dinner: homemade pub food all day, then stay for trad. Official menu talk includes breakfast through stew. No price list captured on the site this pass.</p>
+</article>
+
+<article class="card" id="richmond">
+<div class="tags"><span class="tag">6 min walk</span><span class="tag">Irish / European</span><span class="tag">Bib Gourmand</span><span class="tag warn">Closed Mon–Tue</span></div>
+<h3>Richmond</h3>
+<div class="rating"><span class="star">★ 4.8</span> <span class="muted">664 OpenTable reviews</span> · <span class="muted">OpenTable €31–50</span> <span class="v ok">✔ own site</span></div>
+<p class="why">Michelin Bib Gourmand neighbourhood restaurant on South Richmond Street, a few doors from O'Connell's. Early-evening menu until 6:30pm: <b>2 courses €44 / 3 courses €55</b> (own site) — well timed if you're back at 5. A bit dressier than Devitt's, still casual by Dublin standards. Children not accommodated at dinner (own site).</p>
+<dl>
+<dt>Address</dt><dd>43 Richmond Street South, Portobello, Dublin 2</dd>
+<dt>Hours</dt><dd>Wed–Sat 5:30–9pm last orders · Sun lunch 12:30–2:30pm, dinner 5–8pm last orders. Closed Mon–Tue (own site).</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Richmond%20Restaurant%2C%2043%20Richmond%20Street%20South%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Richmond%20Restaurant%2C%2043%20Richmond%20Street%20South%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://www.richmondrestaurant.ie/">Website</a>
+</div>
+</article>
+
+<article class="card" id="delahunt">
+<div class="tags"><span class="tag">9 min walk</span><span class="tag">Cocktails</span><span class="tag warn">Closed Sun–Mon</span></div>
+<h3>The Sitting Room at Delahunt</h3>
+<span class="v ok">✔ own site</span>
+<p class="why">Upstairs cocktail bar at 39 Camden Street Lower — mid-century sitting room, fireplace, vaulted ceiling. Official page says <b>classic cocktails are available</b> (plus seasonal signatures). Closed Sundays and Mondays. The place to try an Old Fashioned without going into Temple Bar. Bites on the official list (focaccia, olives, jamón crisps). A 12% service charge is added (own site).</p>
+<dl>
+<dt>Address</dt><dd>39 Camden Street Lower, Dublin 2 (cocktail bar is in the same building)</dd>
+<dt>Hours</dt><dd>Tue–Sat 5pm–late (own site). Walk-ins welcome.</dd>
+</dl>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Delahunt%2C%2039%20Camden%20Street%20Lower%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Delahunt%2C%2039%20Camden%20Street%20Lower%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://delahunt.ie/sitting-room/">Website / drinks</a>
+</div>
+</article>
+
+<div class="info"><b>Other casual options:</b> <b>The Hill</b> (8 min, food + cocktails, open Sunday). <b>Host</b>, 13 Ranelagh (~10 min) — Mediterranean small plates; official hours Mon–Thu 5–9:30pm, Fri–Sat 2:30–9:30pm, no Sunday hours listed (treat Sunday as closed). <b>GiGi</b>, 53 Ranelagh (12 min) — casual Italian; OpenTable ★4.8 (984 reviews), €30 and under, dinner Mon–Wed 5–10pm, Thu 5–10:30pm, Fri–Sat from 4pm, Sun 4:30–9pm (OpenTable hours, not re-read on an official page). <b>The Barge</b> if you want dinner 2 minutes from the lift.</div>
+</section>
+
+<section id="gifts">
+<h2>Gift plan</h2>
+<p class="lede">Genuine Irish design, knitwear, whiskey and food — not souvenir-shop tat. Dublin's old "late Thursday" habit is now modest: only some shops stay open to 7pm. Irish Design Shop and Article still close at 6pm every weekday, and Sheridans closes at 5pm Mon–Fri, so go straight after work.</p>
+
+<div class="route">
+<p><b>Recommended: Thursday after work.</b> Leave the hotel around 5pm. Take the Luas Green line from Charlemont (beside the hotel), 2 stops to St Stephen's Green, then walk — or walk the whole way in about 15–25 minutes. Do the 6pm closers first.</p>
+<ol>
+<li><b>Irish Design Shop</b> (41 Drury Street) — independent makers, designed and made in Ireland. Own site: Mon–Sat 10am–6pm, Sun 12–5pm. ~20–24 min walk / short Luas+walk.</li>
+<li><b>Article</b> (Powerscourt Townhouse, South William Street) — Irish design and homeware, almost next door. Own site: Mon–Sat 10:30am–6pm, Sun 12–5pm.</li>
+<li><b>Celtic Whiskey Shop</b> (27–28 Dawson Street) — serious Irish whiskey, knowledgeable staff. Official site blocked automated checks; Google listing (14 Nov 2026): Mon–Sat 10:30am–7pm, Sun 12:30–6pm. ★4.7, 1,244 Google reviews. Best place for bottles to bring home.</li>
+<li><b>Kilkenny Design</b> (6 Nassau Street) — flagship Irish craft, jewellery, design, café upstairs. Own site: Mon–Wed &amp; Fri 10am–6:30pm, <b>Thu 10am–7pm</b>, Sat–Sun 10am–6pm.</li>
+<li><b>Avoca</b> (11–13 Suffolk Street) — knits, throws, homeware and an excellent food hall (the most useful food-gift stop). Own site: Mon–Sat 9am–7pm, <b>Sun 10am–7pm</b>.</li>
+</ol>
+<p>Pint afterwards: <a href="#kehoes">Kehoe's</a> is around the corner from Sheridans / Grafton, or <a href="#odonoghues">O'Donoghue's</a> trad from 8pm.</p>
+</div>
+
+<div class="card">
+<h3>Sheridans Cheesemongers — Sunday, not Thursday</h3>
+<span class="v ok">✔ own site</span>
+<p>11 South Anne Street, just off Grafton. Outstanding Irish cheeses. Own site: <b>Mon–Fri 10am–5pm</b>, Sat 10am–6pm, Sun 12–5pm. You will not make this after work on a weekday (you're only back at 4:30–5pm, plus the walk). Do it Sunday afternoon if you want food gifts, or skip it.</p>
+<div class="btns">
+<a class="b" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Sheridans%20Cheesemongers%2C%2011%20South%20Anne%20Street%2C%20Dublin&travelmode=walking">Directions</a>
+<a class="b alt" href="https://www.google.com/maps/search/?api=1&query=Sheridans%20Cheesemongers%2C%2011%20South%20Anne%20Street%2C%20Dublin">Map</a>
+<a class="b ghost" href="https://sheridanscheesemongers.com/pages/locations/south-anne-st">Website</a>
+</div>
+</div>
+
+<div class="btns" style="margin-top:8px">
+<a class="b alt" href="https://www.google.com/maps/dir/?api=1&origin=Hilton%20Dublin%2C%20Charlemont%20Place%2C%20Dublin&destination=Irish%20Design%20Shop%2C%2041%20Drury%20Street%2C%20Dublin&travelmode=walking">Directions: Irish Design Shop</a>
+<a class="b alt" href="https://irishdesignshop.com/pages/our-story">IDS site</a>
+<a class="b alt" href="https://article.ie/pages/contact">Article</a>
+<a class="b alt" href="https://www.celticwhiskeyshop.com/">Celtic Whiskey</a>
+<a class="b alt" href="https://kilkennydesign.com/storelocator/nassau-street/">Kilkenny</a>
+<a class="b alt" href="https://avoca.com/pages/suffolk-street">Avoca</a>
+</div>
+</section>
+
+<section id="sunday">
+<h2>Sunday arrival</h2>
+<p class="lede">Jet-lag friendly, all near the hotel, with Sunday hours checked where possible.</p>
+<div class="info"><b>1. Canal walk.</b> The Grand Canal is at the hotel door. A flat, easy reset after the American Airlines flight — west toward Portobello Harbour (Lower Deck, O'Connell's) or east toward Leeson Bridge (Hartigan's is closed Sunday).</div>
+<div class="info"><b>2. Trad without a late night.</b> Devitt's official Sunday session starts at <b>1pm</b>, and the kitchen is open. O'Donoghue's Merrion Row lists Sunday music <b>all day</b> (more touristy, ~15–20 min). Doheny &amp; Nesbitt has official Sunday trad from 6:45pm if you get a second wind. Hartigan's is closed.</div>
+<div class="info"><b>3. Dinner.</b> Devitt's (all day), The Hill (from noon Sunday), GiGi (OpenTable: Sunday dinner 4:30–9pm), Richmond (Sunday lunch 12:30–2:30 and dinner 5–8pm last orders), or The Barge 2 minutes away. Camden Kitchen is closed Sunday.</div>
+<div class="info"><b>4. Optional gift afternoon.</b> If you're not wrecked: Sheridans 12–5, Irish Design Shop 12–5, Article 12–5, Kilkenny 10–6, Celtic Whiskey 12:30–6 (Google hours), Avoca 10–7. That would free Thursday for another pub night.</div>
+</section>
+
+<section>
+<h2>Caveats</h2>
+<ul>
+<li>Ratings and some hours come from public Google listings (via Exa mirrors) read on 14 Nov 2026, or from OpenTable, and are labelled. Official-site hours always win when they exist.</li>
+<li>Trad at The Hill, Hartigan's and Toners is reported but not posted on those pubs' own sites.</li>
+<li>The Lower Deck website was down (HTTP 500). J. O'Connell's and Corrigan's have no official sites. Hartigan's public site was down.</li>
+<li>Toners' and Kehoe's official hour tables are badly punctuated (am/pm mix-ups). Google hours are quoted alongside.</li>
+<li>Celtic Whiskey Shop's official site blocked automated access; Thursday-to-7pm hours are from its Google listing, not the official page.</li>
+<li>GiGi hours are from OpenTable, not an official page.</li>
+<li>57 The Headline on Clanbrassil Street has been rebranded as The Libertine — not used as a pick.</li>
+<li>There are two O'Donoghue's. Use 15 Merrion Row.</li>
+<li>Hours can change; re-check the week you're there. This page does not make reservations.</li>
+</ul>
+<p class="sm muted">A wider city guide (sights, Kilmainham, whiskey distilleries, day trips) is still at <a href="../dublin.html">Dublin After Hours</a>. This page is the one centred on the Charlemont hotel.</p>
+</section>
+</main>
+<footer>Compiled 14 Nov 2026 for Frank's Dublin stay at the Hilton, Charlemont Place. Research only.</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const hotel=[53.3311827,-6.2591791];
+const map=L.map('map').setView(hotel,14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(map);
+const pub={radius:8,color:'#163d32',fillColor:'#1b4d3e',fillOpacity:1,weight:1};
+const food={radius:8,color:'#8a6a20',fillColor:'#c4a35a',fillOpacity:1,weight:1};
+const home={radius:9,color:'#fff',fillColor:'#1d4e89',fillOpacity:1,weight:2};
+function pin(lat,lng,title,html,style){
+  L.circleMarker([lat,lng],style).addTo(map).bindPopup('<b>'+title+'</b><br>'+html);
+}
+pin(hotel[0],hotel[1],'Hilton Dublin','Charlemont Place — your base',home);
+pin(53.3306448,-6.2641688,"J. O'Connell's",'6 min · ranked #1',pub);
+pin(53.335551,-6.2655528,"Devitt's",'11 min · trad 7 days',pub);
+pin(53.3268,-6.2585,'The Hill','8 min · Ranelagh',pub);
+pin(53.3359903,-6.2565721,"Hartigan's",'~10 min · Sun closed',pub);
+pin(53.3275519,-6.2616703,"Corrigan's",'~8–13 min',pub);
+pin(53.330686,-6.2652379,'The Lower Deck','~8 min along the canal',pub);
+pin(53.3377292,-6.2524689,'Toners','~15–22 min · Baggot St',pub);
+pin(53.338089,-6.2528851,'Doheny & Nesbitt','~15–22 min · trad + food',pub);
+pin(53.3381718,-6.2541694,"O'Donoghue's",'~15–20 min · Merrion Row',pub);
+pin(53.3412166,-6.2594487,"Kehoe's",'~20–25 min · by the shops',pub);
+pin(53.3305512,-6.2605878,'The Barge','2 min · closest pint',pub);
+pin(53.334233,-6.265894,'Camden Kitchen','10 min · Tue–Sat',food);
+pin(53.33067,-6.26439,'Richmond','6 min · Wed–Sun',food);
+pin(53.334286,-6.265066,'Delahunt Sitting Room','9 min · cocktails Tue–Sat',food);
+pin(53.342651,-6.262946,'Irish Design Shop','closes 6pm weekdays',food);
+pin(53.342267,-6.255447,'Kilkenny Design','Thu until 7pm',food);
+pin(53.343554,-6.259973,'Avoca','until 7pm daily',food);
+pin(53.339888,-6.258840,'Celtic Whiskey Shop','until 7pm Mon–Sat (Google hours)',food);
+pin(53.341167,-6.259177,'Sheridans','weekdays close 5pm',food);
+</script>
+</body>
+</html>
